@@ -1,5 +1,5 @@
-# Imports the Cloud Logging client library
 from google.cloud import logging
+
 
 def hello_world(request):
     """Responds to any HTTP request.
@@ -20,13 +20,11 @@ def hello_world(request):
     logger.log_text("My function is starting")
 
     request_json = request.get_json()  # see https://flask.palletsprojects.com/en/2.0.x/api/ get_json Parse data as JSON
-    # Struct log. The struct can be any JSON-serializable dictionary.
-    logger.log_struct(request_json)
 
     if request.args and 'message' in request.args:
         return request.args.get('message')
     elif request_json and 'message' in request_json:
         return request_json['message']
     else:
-        logging.warning("No message argument provided therefore returning default")
+        logger.log_text("sending the default response as no input was provided", severity="WARNING")
         return f'Hello World!'
