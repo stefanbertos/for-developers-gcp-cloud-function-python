@@ -15,3 +15,5 @@ steps:
       - --max-instances=1
       - --security-level=secure-always
       - --ingress-settings=all
+      - --no-allow-unauthenticated
+      - --service-account=

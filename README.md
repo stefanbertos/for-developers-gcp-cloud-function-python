@@ -8,6 +8,10 @@ Prerequisite:
 ```
 pip install functions-framework
 ```
+- install Cloud logging
+```
+pip install --upgrade google-cloud-logging
+```
 
 To start cloud function locally:
 ```
@@ -21,11 +25,5 @@ For all the details see https://cloud.google.com/functions/docs/running/function
 ##Deploy Cloud Function to GCP via gcloud
 ```
 gcloud auth login
-gcloud functions deploy hello_world --region europe-west3 --allow-unauthenticated --memory 128MB --runtime python39 --timeout 90 --min-instances 0 --max-instances 1 --trigger-http 
+gcloud functions deploy hello_world --region europe-west3 --allow-unauthenticated --memory 128MB --runtime python39 --timeout 90 --min-instances 0 --max-instances 1 --trigger-http --service-account  
 ```
-
-##Use Cloud Build
-1. Enable Cloud Build Api
-2. grants
-3. setup cloud repository - Github
-4. Setup trigger 
