@@ -21,6 +21,8 @@ def hello_world(request):
 
     request_json = request.get_json()  # see https://flask.palletsprojects.com/en/2.0.x/api/ get_json Parse data as JSON
 
+    logger.log_text("Request headers:" + str(request.headers))
+
     if request.args and 'message' in request.args:
         return request.args.get('message')
     elif request_json and 'message' in request_json:
